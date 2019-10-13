@@ -1,0 +1,22 @@
+div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 10px;
+  margin: auto;
+  height: 300px;
+}
+
+button:hover {
+  opacity: 0.7;
+}
+
+#startB {
+  height: 70px;
+  width: 1fr;;
+  
+}
+
+body {
+  background-image: url(http://braccousa.com/wp-content/uploads/2013/07/Dark-wooden-website-background.jpg);
+}
