@@ -47,7 +47,7 @@ audio4.setAttribute(
 start.setAttribute("id", "start");
 var roundNumber = 1;
 
-function roundF() {
+ function roundF() {
   userArr = [];
   start.style.display = "none";
 
@@ -57,8 +57,9 @@ function roundF() {
 
   autoArr.push(random);
 
-  autoArr.forEach(element => {
+  autoArr.forEach((element, index) => {
     setTimeout(() => {
+    
       if (element == 1) {
         audio1.play();
         red1.style.opacity = "0.7";
@@ -66,8 +67,7 @@ function roundF() {
           red1.style.opacity = "1.0";
         }, 1000);
       }
-    }, 2000);
-
+    }, 2000 * index);
     setTimeout(() => {
       if (element == 2) {
         audio2.play();
@@ -77,7 +77,7 @@ function roundF() {
           blue2.style.opacity = "1.0";
         }, 1000);
       }
-    }, 2000);
+    }, 2000 * index);
 
     setTimeout(() => {
       if (element == 3) {
@@ -87,7 +87,7 @@ function roundF() {
           yellow3.style.opacity = "1.0";
         }, 1000);
       }
-    }, 2000);
+    }, 2000 * index);
 
     setTimeout(() => {
       if (element == 4) {
@@ -97,8 +97,10 @@ function roundF() {
           green4.style.opacity = "1.0";
         }, 1000);
       }
-    }, 2000);
+    }, 2000* index);
+
   });
+
   red1.setAttribute("id", 1);
   blue2.setAttribute("id", 2);
   yellow3.setAttribute("id", 3);
