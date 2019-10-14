@@ -1,4 +1,5 @@
 var gameTable = document.createElement("div");
+gameTable.setAttribute("class","colors")
 document.body.appendChild(gameTable);
 var startTable = document.createElement("aside");
 startTable.style.width = "100%";
@@ -42,15 +43,14 @@ audio4.setAttribute(
   "src",
   "https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"
 );
-var roundForLoop = 0;
-var roundNumber = 0;
+
 start.setAttribute("id", "start");
+var roundNumber = 1;
 
 function roundF() {
   userArr = [];
   start.style.display = "none";
 
-  roundNumber += 1;
   roundArea.innerText = `Round : ${roundNumber} `;
 
   var random = Math.floor(Math.random() * 4) + 1;
@@ -119,6 +119,11 @@ start.setAttribute("onClick", "roundF()");
 start.textContent = "Start";
 start.setAttribute("id", "startB");
 
+red1.textContent = "1";
+blue2.textContent = "2";
+yellow3.textContent = "3";
+green4.textContent = "4";
+
 function toArray(m) {
   userArr.push(m);
   if (m == 1) {
@@ -130,23 +135,32 @@ function toArray(m) {
   } else if (m == 4) {
     audio4.play();
   }
-
+ var isEqual=false
   // check if arrays are equal or not
   if (autoArr.length == userArr.length) {
     for (var i = 0; i <= autoArr.length; i++) {
       if (autoArr[i] === userArr[i]) {
         console.log("i'm here");
-        roundNumber += 1;
-        roundF();
+        isEqual=true
       } else {
+        start.style.display = "block";
+        Swal.fire(`you have reached round ${roundNumber}`)
+        setTimeout(() => {
+          location.reload();
+        
+        }, 4000);
         break;
       }
     }
+    if(isEqual == true){
+      setTimeout(() => {
+         roundNumber = roundNumber + 1;
+          roundF();
+        }, 2000);
+    }
+    
   }
 }
-
-console.log(userArr);
-console.log(autoArr);
 
 red1.style.backgroundColor = "red";
 blue2.style.backgroundColor = "blue";
@@ -159,3 +173,5 @@ gameTable.appendChild(yellow3);
 gameTable.appendChild(green4);
 startTable.appendChild(start);
 startTable.appendChild(roundArea);
+
+
