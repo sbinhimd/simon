@@ -1,5 +1,9 @@
 var gameTable = document.createElement("div");
 document.body.appendChild(gameTable);
+var startTable = document.createElement("aside");
+startTable.style.width = "100%";
+startTable.style.alignContent = "center";
+document.body.appendChild(startTable);
 
 var autoArr = [];
 var userArr = [];
@@ -43,6 +47,7 @@ var roundNumber = 0;
 start.setAttribute("id", "start");
 
 function roundF() {
+  userArr = [];
   start.style.display = "none";
 
   roundNumber += 1;
@@ -53,34 +58,46 @@ function roundF() {
   autoArr.push(random);
 
   autoArr.forEach(element => {
-   
-    if (element == 1) {
-      audio1.play();
+    setTimeout(() => {
+      if (element == 1) {
+        audio1.play();
+        red1.style.opacity = "0.7";
+        setTimeout(function() {
+          red1.style.opacity = "1.0";
+        }, 1000);
+      }
+    }, 2000);
 
-      red1.style.opacity = "0.7";
-      setTimeout(function() {
-        red1.style.opacity = "1.0";
-      }, 1000);
-    } else if (element == 2) {
-      audio2.play();
+    setTimeout(() => {
+      if (element == 2) {
+        audio2.play();
 
-      blue2.style.opacity = "0.7";
-      setTimeout(function() {
-        blue2.style.opacity = "1.0";
-      }, 1000);
-    } else if (element == 3) {
-      audio3.play();
-      yellow3.style.opacity = "0.7";
-      setTimeout(function() {
-        yellow3.style.opacity = "1.0";
-      }, 1000);
-    } else if (element == 4) {
-      audio4.play();
-      green4.style.opacity = "0.7";
-      setTimeout(function() {
-        green4.style.opacity = "1.0";
-      }, 1000);
-    }
+        blue2.style.opacity = "0.7";
+        setTimeout(function() {
+          blue2.style.opacity = "1.0";
+        }, 1000);
+      }
+    }, 2000);
+
+    setTimeout(() => {
+      if (element == 3) {
+        audio3.play();
+        yellow3.style.opacity = "0.7";
+        setTimeout(function() {
+          yellow3.style.opacity = "1.0";
+        }, 1000);
+      }
+    }, 2000);
+
+    setTimeout(() => {
+      if (element == 4) {
+        audio4.play();
+        green4.style.opacity = "0.7";
+        setTimeout(function() {
+          green4.style.opacity = "1.0";
+        }, 1000);
+      }
+    }, 2000);
   });
   red1.setAttribute("id", 1);
   blue2.setAttribute("id", 2);
@@ -113,16 +130,18 @@ function toArray(m) {
   } else if (m == 4) {
     audio4.play();
   }
+
   // check if arrays are equal or not
   if (autoArr.length == userArr.length) {
-    var i = 0;
-    autoArr.forEach(element => {
-      if (element === userArr[i]) {
+    for (var i = 0; i <= autoArr.length; i++) {
+      if (autoArr[i] === userArr[i]) {
         console.log("i'm here");
+        roundNumber += 1;
         roundF();
-        i += 1;
+      } else {
+        break;
       }
-    });
+    }
   }
 }
 
@@ -138,5 +157,5 @@ gameTable.appendChild(red1);
 gameTable.appendChild(blue2);
 gameTable.appendChild(yellow3);
 gameTable.appendChild(green4);
-gameTable.appendChild(start);
-gameTable.appendChild(roundArea);
+startTable.appendChild(start);
+startTable.appendChild(roundArea);
