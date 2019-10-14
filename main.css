@@ -9,6 +9,15 @@ div {
 
 button:hover {
   opacity: 0.7;
+  
+}
+
+button{
+  border: black;
+}
+
+h3{
+  color: aqua;
 }
 
 #startB {

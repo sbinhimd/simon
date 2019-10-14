@@ -9,54 +9,78 @@ var blue2 = document.createElement("button");
 var yellow3 = document.createElement("button");
 var green4 = document.createElement("button");
 var start = document.createElement("button");
-var audio1= document.createElement("audio");
-var audio2= document.createElement("audio");
-var audio3= document.createElement("audio");
-var audio4= document.createElement("audio");
+var audio1 = document.createElement("audio");
+var audio2 = document.createElement("audio");
+var audio3 = document.createElement("audio");
+var audio4 = document.createElement("audio");
+var roundArea = document.createElement("h3");
 
-audio1.setAttribute("id","audio1");
-audio1.setAttribute("src","https://s3.amazonaws.com/freecodecamp/simonSound1.mp3");
+audio1.setAttribute("id", "audio1");
+audio1.setAttribute(
+  "src",
+  "https://s3.amazonaws.com/freecodecamp/simonSound1.mp3"
+);
 
-audio2.setAttribute("id","audio2");
-audio2.setAttribute("src","https://s3.amazonaws.com/freecodecamp/simonSound2.mp3");
+audio2.setAttribute("id", "audio2");
+audio2.setAttribute(
+  "src",
+  "https://s3.amazonaws.com/freecodecamp/simonSound2.mp3"
+);
 
-audio3.setAttribute("id","audio3");
-audio3.setAttribute("src","https://s3.amazonaws.com/freecodecamp/simonSound3.mp3");
+audio3.setAttribute("id", "audio3");
+audio3.setAttribute(
+  "src",
+  "https://s3.amazonaws.com/freecodecamp/simonSound3.mp3"
+);
 
-audio4.setAttribute("id","audio4");
-audio4.setAttribute("src","https://s3.amazonaws.com/freecodecamp/simonSound4.mp3");
-
-
-
+audio4.setAttribute("id", "audio4");
+audio4.setAttribute(
+  "src",
+  "https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"
+);
+var roundForLoop = 0;
+var roundNumber = 0;
 start.setAttribute("id", "start");
-function play() {
-  var round = 1;
-  for (var i = 1; i <= round; i++) {
-    var random = Math.floor(Math.random() * 4);
-    autoArr.push(random);
-  }
+
+function roundF() {
+  start.style.display = "none";
+
+  roundNumber += 1;
+  roundArea.innerText = `Round : ${roundNumber} `;
+
+  var random = Math.floor(Math.random() * 4) + 1;
+
+  autoArr.push(random);
+
   autoArr.forEach(element => {
-      if(element==1){
-        audio1.play()
-        red1.style.backgroundColor = "light red";
-        setTimeout(wait,1000)
-        red1.style.backgroundColor = "red";
-      }else if(element==2){
-        audio2.play()
-        blue2.style.backgroundColor = "light blue";
-        setTimeout(wait,1000)
-        blue2.style.backgroundColor = "blue";
-      }else if(element==3){
-        audio3.play()
-        yellow3.style.backgroundColor = "light yellow";
-        setTimeout(wait,1000)
-        yellow3.style.backgroundColor = "yellow";
-      }else if(element==4){
-        audio4.play()
-        green4.style.backgroundColor = "light green";
-        setTimeout(wait,1000)
-        green4.style.backgroundColor = "green";
-      }
+   
+    if (element == 1) {
+      audio1.play();
+
+      red1.style.opacity = "0.7";
+      setTimeout(function() {
+        red1.style.opacity = "1.0";
+      }, 1000);
+    } else if (element == 2) {
+      audio2.play();
+
+      blue2.style.opacity = "0.7";
+      setTimeout(function() {
+        blue2.style.opacity = "1.0";
+      }, 1000);
+    } else if (element == 3) {
+      audio3.play();
+      yellow3.style.opacity = "0.7";
+      setTimeout(function() {
+        yellow3.style.opacity = "1.0";
+      }, 1000);
+    } else if (element == 4) {
+      audio4.play();
+      green4.style.opacity = "0.7";
+      setTimeout(function() {
+        green4.style.opacity = "1.0";
+      }, 1000);
+    }
   });
   red1.setAttribute("id", 1);
   blue2.setAttribute("id", 2);
@@ -74,28 +98,33 @@ function play() {
   green4.setAttribute("onClick", "toArray(4)");
 }
 
-start.setAttribute("onClick", "play()");
+start.setAttribute("onClick", "roundF()");
 start.textContent = "Start";
 start.setAttribute("id", "startB");
 
 function toArray(m) {
   userArr.push(m);
-  if(m==1){
-      audio1.play()
-}else if(m==2){
-    audio2.play()
-}else if(m==3){
-    audio3.play()
-}else if(m==4){
-    audio4.play()
+  if (m == 1) {
+    audio1.play();
+  } else if (m == 2) {
+    audio2.play();
+  } else if (m == 3) {
+    audio3.play();
+  } else if (m == 4) {
+    audio4.play();
+  }
+  // check if arrays are equal or not
+  if (autoArr.length == userArr.length) {
+    var i = 0;
+    autoArr.forEach(element => {
+      if (element === userArr[i]) {
+        console.log("i'm here");
+        roundF();
+        i += 1;
+      }
+    });
+  }
 }
-  
-}
-function wait(){
-
-}
-
-
 
 console.log(userArr);
 console.log(autoArr);
@@ -110,3 +139,4 @@ gameTable.appendChild(blue2);
 gameTable.appendChild(yellow3);
 gameTable.appendChild(green4);
 gameTable.appendChild(start);
+gameTable.appendChild(roundArea);
