@@ -47,15 +47,16 @@ audio4.setAttribute(
 start.setAttribute("id", "start");
 var roundNumber = 1;
 
- function roundF() {
+ function roundF(level) {
   userArr = [];
   start.style.display = "none";
 
   roundArea.innerText = `Round : ${roundNumber} `;
-
-  var random = Math.floor(Math.random() * 4) + 1;
-
+  for(var i =0;i<level;i++){
+    var random = Math.floor(Math.random() * 4) + 1;
   autoArr.push(random);
+  }
+  
 
   autoArr.forEach((element, index) => {
     setTimeout(() => {
@@ -117,9 +118,9 @@ var roundNumber = 1;
   green4.setAttribute("onClick", "toArray(4)");
 }
 
-start.setAttribute("onClick", "roundF()");
-start.textContent = "Start";
-start.setAttribute("id", "startB");
+// start.setAttribute("onClick", "roundF()");
+// start.textContent = "Start";
+// start.setAttribute("id", "startB");
 
 red1.textContent = "1";
 blue2.textContent = "2";
@@ -128,6 +129,19 @@ green4.textContent = "4";
 
 function toArray(m) {
   userArr.push(m);
+  for(var i =0;i<userArr.length;i++){
+    if(!(userArr[i]==autoArr[i])){
+      start.style.display = "block";
+      Swal.fire(`you have reached round ${roundNumber}`)
+      
+      setTimeout(() => {
+        location.reload();
+      
+      }, 4000);
+
+    }
+  }
+  
   if (m == 1) {
     audio1.play();
   } else if (m == 2) {
@@ -137,6 +151,7 @@ function toArray(m) {
   } else if (m == 4) {
     audio4.play();
   }
+  
  var isEqual=false
   // check if arrays are equal or not
   if (autoArr.length == userArr.length) {

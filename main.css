@@ -11,6 +11,28 @@ button:hover {
   opacity: 0.7;
 }
 
+.levelB{
+  height: 40px;
+  width: 80px;
+
+}
+
+.levelChoosen{
+  opacity: 0.7;
+  height: 50px;
+  width: 100px;
+  background-color: bisque;
+}
+
+.levelDiv{
+  display: block;
+  align-items: center;
+  gap: 10px;
+  margin-left: 30%;
+  margin-right: 30%;
+  margin-top: 20px; 
+}
+
 button {
   border: black;
 }
@@ -18,23 +40,22 @@ button {
 h3 {
   color: aqua;
   margin: auto;
+  height: 70px;
+  width: 40%;
+  margin-left: 30%;
+  margin-right: 30%;
+  margin-top: 20px;
 }
 
 #startB {
   height: 70px;
   width: 40%;
+
   margin-left: 30%;
   margin-right: 30%;
-  margin-top: 20px;
+  margin-top: 20px; 
 }
 
-h3 {
-  height: 70px;
-  width: 40%;
-  margin-left: 30%;
-  margin-right: 30%;
-  margin-top: 20px;
-}
 
 body {
   background-image: url("backgroundWood.jpg");
