@@ -4,17 +4,39 @@
   grid-template-rows: 1fr 1fr;
   gap: 10px;
   margin: auto;
-  height: 300px;
+  height: 500px;
+  width: 70%;
+  
+}
+button {
+  outline: none;
+}
+button:active {
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }
 
-/* button:hover {
-  opacity: 0.7;
-} */
-
+.redb{
+  border-radius:100% 0px 0px 0px;
+  border: black;
+  
+}
+.blueb{
+  border-radius: 0px 100% 0px 0px;
+  border: black;
+}
+.yellowb{
+  border-radius: 0px 0px 0px 100%;
+  border: black;
+}
+.greenb{
+  border-radius: 0px 0px 100% 0px;
+  border: black;
+}
 .levelB{
   height: 40px;
   width: 80px;
-
+  opacity: 1.0;
 }
 
 .levelChoosen{
@@ -33,7 +55,7 @@
   margin-top: 20px; 
 }
 
-button {
+.buttonBorder {
   border: black;
 }
 
@@ -50,14 +72,15 @@ h3 {
 #startB {
   height: 70px;
   width: 40%;
-
   margin-left: 30%;
   margin-right: 30%;
-  margin-top: 20px; 
+  margin-top: 20px;
+  background-color: bisque;
 }
 
 
 body {
   background-image: url("backgroundWood.jpg");
   align-items: center;
+  font-family: 'Arvo', serif;
 }
