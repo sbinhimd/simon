@@ -68,6 +68,12 @@ h3 {
   margin-right: 30%;
   margin-top: 20px;
 }
+h1{
+  color: beige;
+}
+h2{
+  color: bisque;;
+}
 
 #startB {
   height: 70px;
@@ -83,4 +89,18 @@ body {
   background-image: url("backgroundWood.jpg");
   align-items: center;
   font-family: 'Arvo', serif;
+}
+
+@media screen and (max-width: 600px) {
+  .colors{
+  height: 399px;
+    width: 100%;
+  }
+  .levelB{
+  height: 20px;
+  width: 40px;
+  }
+  #startB{
+    margin-top: 20px;
+  }
 }

@@ -1,6 +1,6 @@
 var autoArr = [];
 var userArr = [];
-var maxRound=2;
+var maxRound=5;
 var level;
 var audio1 = document.createElement("audio");
 var audio2 = document.createElement("audio");
