@@ -1,24 +1,11 @@
-var gameTable = document.createElement("div");
-gameTable.setAttribute("class","colors")
-document.body.appendChild(gameTable);
-var startTable = document.createElement("aside");
-startTable.style.width = "100%";
-startTable.style.alignContent = "center";
-document.body.appendChild(startTable);
-
 var autoArr = [];
 var userArr = [];
-
-var red1 = document.createElement("button");
-var blue2 = document.createElement("button");
-var yellow3 = document.createElement("button");
-var green4 = document.createElement("button");
-var start = document.createElement("button");
+var level;
 var audio1 = document.createElement("audio");
 var audio2 = document.createElement("audio");
 var audio3 = document.createElement("audio");
 var audio4 = document.createElement("audio");
-var roundArea = document.createElement("h3");
+var roundNumber = 1;
 
 audio1.setAttribute("id", "audio1");
 audio1.setAttribute(
@@ -43,24 +30,25 @@ audio4.setAttribute(
   "src",
   "https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"
 );
+var start = document.createElement("button");
+var roundArea = document.createElement("h3");
+var red1 = document.createElement("button");
+var blue2 = document.createElement("button");
+var yellow3 = document.createElement("button");
+var green4 = document.createElement("button");
 
-start.setAttribute("id", "start");
-var roundNumber = 1;
-
- function roundF(level) {
+function roundF(level) {
   userArr = [];
   start.style.display = "none";
 
   roundArea.innerText = `Round : ${roundNumber} `;
-  for(var i =0;i<level;i++){
+  for (var i = 0; i < level; i++) {
     var random = Math.floor(Math.random() * 4) + 1;
-  autoArr.push(random);
+    autoArr.push(random);
   }
-  
 
   autoArr.forEach((element, index) => {
     setTimeout(() => {
-    
       if (element == 1) {
         audio1.play();
         red1.style.opacity = "0.7";
@@ -98,8 +86,7 @@ var roundNumber = 1;
           green4.style.opacity = "1.0";
         }, 1000);
       }
-    }, 2000* index);
-
+    }, 2000 * index);
   });
 
   red1.setAttribute("id", 1);
@@ -111,84 +98,148 @@ var roundNumber = 1;
   blue2.setAttribute("class", "buttonB");
   yellow3.setAttribute("class", "buttonY");
   green4.setAttribute("class", "buttonG");
-
-  red1.setAttribute("onClick", "toArray(1)");
-  blue2.setAttribute("onClick", "toArray(2)");
-  yellow3.setAttribute("onClick", "toArray(3)");
-  green4.setAttribute("onClick", "toArray(4)");
+  // possble error
+  red1.setAttribute("onClick", "toArray(1,level)");
+  blue2.setAttribute("onClick", "toArray(2,level)");
+  yellow3.setAttribute("onClick", "toArray(3,level)");
+  green4.setAttribute("onClick", "toArray(4,level)");
 }
 
-// start.setAttribute("onClick", "roundF()");
-// start.textContent = "Start";
-// start.setAttribute("id", "startB");
+function game() {
+  //hide start page
+  var startd = document.getElementById("startdiv");
+  startd.style.display = "none";
 
-red1.textContent = "1";
-blue2.textContent = "2";
-yellow3.textContent = "3";
-green4.textContent = "4";
+  var gameTable = document.createElement("div");
+  gameTable.setAttribute("class", "colors");
+  document.body.appendChild(gameTable);
 
-function toArray(m) {
+  var startTable = document.createElement("aside");
+  startTable.style.width = "100%";
+  startTable.style.alignContent = "center";
+  document.body.appendChild(startTable);
+
+  start.setAttribute("id", "start");
+  start.setAttribute("id", "startB");
+
+  red1.textContent = "1";
+  blue2.textContent = "2";
+  yellow3.textContent = "3";
+  green4.textContent = "4";
+
+  red1.style.backgroundColor = "red";
+  blue2.style.backgroundColor = "blue";
+  yellow3.style.backgroundColor = "yellow";
+  green4.style.backgroundColor = "green";
+
+  gameTable.appendChild(red1);
+  gameTable.appendChild(blue2);
+  gameTable.appendChild(yellow3);
+  gameTable.appendChild(green4);
+  startTable.appendChild(roundArea);
+  roundF(level);
+}
+
+function toArray(m,level) {
   userArr.push(m);
-  for(var i =0;i<userArr.length;i++){
-    if(!(userArr[i]==autoArr[i])){
-      start.style.display = "block";
-      Swal.fire(`you have reached round ${roundNumber}`)
-      
+  for (var i = 0; i < userArr.length; i++) {
+    if (!(userArr[i] == autoArr[i])) {
+      //start.style.display = "block";
+      Swal.fire(`you have reached round ${roundNumber}`);
+
       setTimeout(() => {
         location.reload();
-      
       }, 4000);
-
-    }
-  }
-  
-  if (m == 1) {
-    audio1.play();
-  } else if (m == 2) {
-    audio2.play();
-  } else if (m == 3) {
-    audio3.play();
-  } else if (m == 4) {
-    audio4.play();
-  }
-  
- var isEqual=false
-  // check if arrays are equal or not
-  if (autoArr.length == userArr.length) {
-    for (var i = 0; i <= autoArr.length; i++) {
-      if (autoArr[i] === userArr[i]) {
-        console.log("i'm here");
-        isEqual=true
-      } else {
-        start.style.display = "block";
-        Swal.fire(`you have reached round ${roundNumber}`)
-        setTimeout(() => {
-          location.reload();
-        
-        }, 4000);
-        break;
+    } else {
+      if (m == 1) {
+        audio1.play();
+      } else if (m == 2) {
+        audio2.play();
+      } else if (m == 3) {
+        audio3.play();
+      } else if (m == 4) {
+        audio4.play();
       }
+      if(userArr.length==autoArr.length){
+        setTimeout(() => {
+        roundNumber = roundNumber + 1;
+        roundF(level);
+      }, 2000);
+      }
+      
     }
-    if(isEqual == true){
-      setTimeout(() => {
-         roundNumber = roundNumber + 1;
-          roundF();
-        }, 2000);
-    }
-    
   }
+
 }
+function startPage() {
+  var startTable = document.createElement("div");
+  startTable.setAttribute("id", "startdiv");
+  startTable.setAttribute("class", "colors");
+  document.body.appendChild(startTable);
 
-red1.style.backgroundColor = "red";
-blue2.style.backgroundColor = "blue";
-yellow3.style.backgroundColor = "yellow";
-green4.style.backgroundColor = "green";
+  startTable.classList.add("levelDiv");
+  var Simon = document.createElement("h1");
+  var select = document.createElement("h2");
+  Simon.innerText = "Simon Game";
+  select.innerText = "Select the level";
 
-gameTable.appendChild(red1);
-gameTable.appendChild(blue2);
-gameTable.appendChild(yellow3);
-gameTable.appendChild(green4);
-startTable.appendChild(start);
-startTable.appendChild(roundArea);
+  var hardB = document.createElement("button");
+  var midB = document.createElement("button");
+  var easyB = document.createElement("button");
+  var play = document.createElement("button");
 
+  hardB.setAttribute("id", "H");
+  midB.setAttribute("id", "M");
+  easyB.setAttribute("id", "E");
+  play.setAttribute("id", "startB");
 
+  hardB.textContent = "Hard";
+  midB.textContent = "Mid";
+  easyB.textContent = "Easy";
+  play.textContent = "Play";
+
+  hardB.setAttribute("class", "levelChoosen");
+  midB.setAttribute("class", "levelChoosen");
+  easyB.setAttribute("class", "levelChoosen");
+  play.setAttribute("class", "levelChoosen");
+
+  hardB.classList.add("levelB");
+  midB.classList.add("levelB");
+  easyB.classList.add("levelB");
+
+  hardB.addEventListener("click", function() {
+    hardB.classList.add("levelChoosen");
+    midB.classList.remove("levelChoosen");
+    easyB.classList.remove("levelChoosen");
+    level = 3;
+  });
+
+  midB.addEventListener("click", function() {
+    midB.classList.add("levelChoosen");
+    hardB.classList.remove("levelChoosen");
+    easyB.classList.remove("levelChoosen");
+    level = 2;
+  });
+
+  easyB.addEventListener("click", function() {
+    easyB.classList.add("levelChoosen");
+    midB.classList.remove("levelChoosen");
+    hardB.classList.remove("levelChoosen");
+    level = 1;
+  });
+  startTable.appendChild(Simon);
+  startTable.appendChild(select);
+  startTable.appendChild(hardB);
+  startTable.appendChild(midB);
+  startTable.appendChild(easyB);
+  startTable.appendChild(play);
+
+  play.addEventListener("click", function() {
+    if (level == undefined) {
+      Swal.fire("Choose a level first!");
+    } else {
+      game(level);
+    }
+  });
+}
+startPage();
