@@ -42,6 +42,7 @@ function roundF(level) {
   start.style.display = "none";
 
   roundArea.innerText = `Round : ${roundNumber} `;
+  
   for (var i = 0; i < level; i++) {
     var random = Math.floor(Math.random() * 4) + 1;
     autoArr.push(random);
@@ -105,7 +106,7 @@ function roundF(level) {
   green4.setAttribute("onClick", "toArray(4,level)");
 }
 
-function game() {
+function game(level) {
   //hide start page
   var startd = document.getElementById("startdiv");
   startd.style.display = "none";
@@ -140,7 +141,7 @@ function game() {
   roundF(level);
 }
 
-function toArray(m,level) {
+function toArray(m, level) {
   userArr.push(m);
   for (var i = 0; i < userArr.length; i++) {
     if (!(userArr[i] == autoArr[i])) {
@@ -149,8 +150,9 @@ function toArray(m,level) {
 
       setTimeout(() => {
         location.reload();
-      }, 4000);
-    } else {
+      }, 4000); 
+    }
+    } 
       if (m == 1) {
         audio1.play();
       } else if (m == 2) {
@@ -160,16 +162,14 @@ function toArray(m,level) {
       } else if (m == 4) {
         audio4.play();
       }
-      if(userArr.length==autoArr.length){
+      if (userArr.length == autoArr.length) {
         setTimeout(() => {
-        roundNumber = roundNumber + 1;
-        roundF(level);
-      }, 2000);
+          roundNumber = roundNumber + 1;
+          roundF(level);
+        }, 2000);
       }
-      
-    }
-  }
-
+    
+ 
 }
 function startPage() {
   var startTable = document.createElement("div");
