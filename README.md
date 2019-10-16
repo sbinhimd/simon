@@ -7,7 +7,7 @@ you have to press the buttons in the same order the computer will show you
 Simon is a memory game where you have to remember the buttons presses and press it again in the same order, can you ?
 
 ### Technical Used
-What technologies you used that helped you build this project. 
+
 
 ```
 HTML (just for the script and css link)
@@ -17,34 +17,60 @@ JavaScript (all the code created with DOM)
 
 ### Wireframes
 
-Your step by step planning sketch of your project, that you can post them as an image in here.
+![](Homepage.png)
+![](start.png)
+
+
 
 ### User Stories
 
 A story of the project user, that explains the use of the project.
+
+- as a user i want to select the difficulty level of the game
+- as a user i want to know in which round i'm playing
+
 
 ---
 
 ## Planning and Development Process
 
 A basic story of your planning and developing this project.
+### Day 1
+- worked on the basic css
+- begin with the logic
+
+### Day 2
+- completed the basic interface
+- half of the game logic is done
+- added audio files
+
+### Day 3
+- added levels to the game (needs a fix)
+- added simple levels interface
+
+### Day 4
+- enhance the game interface
+- completed the game logic 
+- fixed the levels problem
+
 
 ### Problem-Solving Strategy
 
-What strategy did you use to solve your problems.
+- console logs
+- following the code step by step
 
 ### Unsolved problems
 
-List unsolved problems which would be fixed in future iterations.
+- tones plays if the user win
 
 ---
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+* thanks to the instructing team for the amazing experience so far
 
 ---
 
  ## References
+ - sweet alert 2
+ - google fonts
