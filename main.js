@@ -62,6 +62,8 @@ function roundF(level) {
     // blue2.disabled=true
     // yellow3.disabled=true
     // green4.disabled=true
+
+    //display autoArray
      autoArr.forEach((element, index) => {
     setTimeout(() => {
       if (element == 1) {
@@ -127,7 +129,7 @@ function roundF(level) {
 }
 
 function game(level) {
-  //hide start page
+  //hide start page and prepare game page
   var startd = document.getElementById("startdiv");
   startd.style.display = "none";
 
@@ -141,11 +143,6 @@ function game(level) {
   document.body.appendChild(startTable);
 
   start.setAttribute("id", "startB");
-
-  red1.textContent = "1";
-  blue2.textContent = "2";
-  yellow3.textContent = "3";
-  green4.textContent = "4";
 
   red1.style.backgroundColor = "red";
   blue2.style.backgroundColor = "blue";
@@ -251,10 +248,6 @@ function startPage() {
   easyB.textContent = "Easy";
   play.textContent = "Play";
 
-  // hardB.setAttribute("class", "levelChoosen");
-  // midB.setAttribute("class", "levelChoosen");
-  // easyB.setAttribute("class", "levelChoosen");
-  // play.setAttribute("class", "levelChoosen");
 
   hardB.classList.add("levelB");
   midB.classList.add("levelB");

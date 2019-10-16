@@ -17,8 +17,10 @@ JavaScript (all the code created with DOM)
 
 ### Wireframes
 
-![](Homepage.png)
-![](start.png)
+![](./img/Homepage.png)
+![](./img/start.png)
+![](./img/startweb.png)
+![](./img/gameweb.png)
 
 
 
@@ -62,6 +64,7 @@ A basic story of your planning and developing this project.
 ### Unsolved problems
 
 - tones plays if the user win
+- disable buttons while cpu shows the buttons
 
 ---
 
