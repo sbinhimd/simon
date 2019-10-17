@@ -6,7 +6,6 @@
   margin: auto;
   height: 85vh;
   width: 70%;
-  
 }
 button {
   outline: none;
@@ -16,41 +15,40 @@ button:active {
   transform: translateY(5px);
 }
 
-.redb{
-  border-radius:100% 0px 0px 0px;
+.redb {
+  border-radius: 100% 0px 0px 0px;
   border: black;
-  
 }
-.blueb{
+.blueb {
   border-radius: 0px 100% 0px 0px;
   border: black;
 }
-.yellowb{
+.yellowb {
   border-radius: 0px 0px 0px 100%;
   border: black;
 }
-.greenb{
+.greenb {
   border-radius: 0px 0px 100% 0px;
   border: black;
 }
-.levelB{
+.levelB {
   height: 40px;
   width: 80px;
-  opacity: 1.0;
+  opacity: 1;
 }
 
-.levelChoosen{
+.levelChoosen {
   opacity: 0.7;
   height: 50px;
   width: 100px;
   background-color: bisque;
 }
 
-.levelDiv{
+.levelDiv {
   display: block;
   margin-top: 20%;
   margin-bottom: 20%;
-    text-align: center;
+  text-align: center;
 }
 
 .buttonBorder {
@@ -66,11 +64,11 @@ h3 {
   margin-right: 30%;
   margin-top: 20px;
 }
-h1{
+h1 {
   color: beige;
 }
-h2{
-  color: bisque;;
+h2 {
+  color: bisque;
 }
 
 #startB {
@@ -82,51 +80,50 @@ h2{
   background-color: bisque;
 }
 
-
 body {
   background-image: url("./img/backgroundWood.jpg");
   align-items: center;
-  font-family: 'Arvo', serif;
+  font-family: "Arvo", serif;
 }
 
-@media (min-width:150px)  and (max-width: 500px) {
-  .colors{
+@media (min-width: 150px) and (max-width: 500px) {
+  .colors {
     height: 45vh;
     width: 90%;
   }
-  .levelB{
-  height: 20px;
-  width: 40px;
+  .levelB {
+    height: 20px;
+    width: 40px;
   }
-  #startB{
+  #startB {
     margin-top: 20px;
   }
 }
 
 @media (min-width: 501px) and (max-width: 880px) {
-  .colors{
+  .colors {
     height: 50vh;
     width: 70%;
   }
-  .levelB{
-  height: 20px;
-  width: 40px;
+  .levelB {
+    height: 20px;
+    width: 40px;
   }
-  #startB{
+  #startB {
     margin-top: 20px;
   }
 }
 
 @media (min-width: 881px) and (max-width: 1350px) {
-  .colors{
+  .colors {
     height: 75vh;
     width: 70%;
   }
-  .levelB{
-  height: 20px;
-  width: 40px;
+  .levelB {
+    height: 20px;
+    width: 40px;
   }
-  #startB{
+  #startB {
     margin-top: 20px;
   }
 }

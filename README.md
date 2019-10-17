@@ -1,10 +1,13 @@
 # Simon Game
 
-you have to press the buttons in the same order the computer will show you
+you have to press the colors in the same order the computer will show you
 
 ## Description
 
-Simon is a memory game where you have to remember the buttons presses and press it again in the same order, can you ?
+Simon is a memory game where you have to remember the buttons presses and press it again in the same order,in each round the cpu will show you the previous presses and plus the new ones, can you ?
+- on easy the cpu will add one color each round
+- on mid the cpu will add two colors each round
+- on hard the cpu will add three colors each round
 
 ### Technical Used
 
@@ -54,6 +57,7 @@ A basic story of your planning and developing this project.
 - enhance the game interface
 - completed the game logic 
 - fixed the levels problem
+- added @media on css so the game can work on small screens
 
 
 ### Problem-Solving Strategy
