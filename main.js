@@ -1,12 +1,14 @@
 var autoArr = [];
 var userArr = [];
-var maxRound = 5;
+
+var maxRound = null;
 var level;
 var audio1 = document.createElement("audio");
 var audio2 = document.createElement("audio");
 var audio3 = document.createElement("audio");
 var audio4 = document.createElement("audio");
 var roundNumber = 1;
+var stop = false
 
 audio1.setAttribute("id", "audio1");
 audio1.setAttribute(
@@ -46,22 +48,18 @@ yellow3.setAttribute("class", "buttonBorder");
 green4.setAttribute("class", "buttonBorder");
 
 function roundF(level) {
+  //showing auto array
   userArr = [];
   start.style.display = "none";
-
   roundArea.innerText = `Round : ${roundNumber}  of  ${maxRound} `;
 
-  for (var i = 0; i < level; i++) {
+  if(stop == false){
+    for (var i = 0; i < level; i++) {
     var random = Math.floor(Math.random() * 4) + 1;
     autoArr.push(random);
   }
 
   setTimeout(() => {
-    // red1.disabled=true
-    // blue2.disabled=true
-    // yellow3.disabled=true
-    // green4.disabled=true
-
     //display autoArray
     autoArr.forEach((element, index) => {
       setTimeout(() => {
@@ -104,11 +102,8 @@ function roundF(level) {
         }
       }, 2000 * index);
     });
-    // red1.disabled=false
-    // blue2.disabled=false
-    // yellow3.disabled=false
-    // green4.disabled=false
-  }, 1500);
+    
+  }, 1500);}
 
   red1.setAttribute("id", 1);
   blue2.setAttribute("id", 2);
@@ -158,19 +153,25 @@ function game(level) {
 function toArray(m, level) {
   userArr.push(m);
   for (var i = 0; i < userArr.length; i++) {
+    
     if (!(userArr[i] == autoArr[i])) {
-      Swal.fire(`you lost in round ${roundNumber}`);
-      setTimeout(() => {
-        location.reload();
-      }, 3000);
 
-      nothing();
-      function nothing() {
-        nothing();
-      }
+stop = true
+
+      Swal.fire({
+        title: `you lost in round ${roundNumber}`,
+        icon: 'info',
+        confirmButtonText: 'OK'
+      }).then((result) => {
+        if (result.value) {
+          location.reload();
+        }
+      })
+
     }
   }
-  if (m == 1) {
+  if(stop == false)
+  {if (m == 1) {
     audio1.play();
   } else if (m == 2) {
     audio2.play();
@@ -178,41 +179,37 @@ function toArray(m, level) {
     audio3.play();
   } else if (m == 4) {
     audio4.play();
-  }
+  }}
   if (userArr.length == autoArr.length) {
-    if (userArr.length == maxRound) {
-      Swal.fire({
-        title: "Congrats You Win!",
-        animation: false,
+    
+    console.log("here 1");
+    
+    if (userArr.length == maxRound*level) {
+      console.log("here 2");
+      if (JSON.stringify(userArr) === JSON.stringify(autoArr)) {
+        console.log("here 3");
+
+        Swal.fire({
+        title: "Congrats You Won!",
+        animation: true,
         customClass: {
           popup: "animated tada"
         }
-      });
-
-      setTimeout(() => {
-        location.reload();
-      }, 5000);
-      nothing();
-      //win tone
-      // while(true){
-      //   setTimeout(() => {
-      //     audio1.play();
-      //   }, 500);
-      //   setTimeout(() => {
-      //     audio2.play();
-      //   }, 500*2);
-      //   setTimeout(() => {
-      //     audio3.play();
-      //   }, 500*3);
-      //   setTimeout(() => {
-      //     audio4.play();
-      //   }, 500*4);
-      // }
+      }).then((result) => {
+        if (result.value) {
+          location.reload();
+        }
+      })
+;
+      }
+      
     }
-    setTimeout(() => {
+   if(stop == false ){ 
+     
+     setTimeout(() => {
       roundNumber = roundNumber + 1;
       roundF(level);
-    }, 2000);
+    }, 2000);}
   }
 }
 function startPage() {
@@ -251,6 +248,8 @@ function startPage() {
     midB.classList.remove("levelChoosen");
     easyB.classList.remove("levelChoosen");
     level = 3;
+    NumberOfRounds()
+    
   });
 
   midB.addEventListener("click", function() {
@@ -258,6 +257,7 @@ function startPage() {
     hardB.classList.remove("levelChoosen");
     easyB.classList.remove("levelChoosen");
     level = 2;
+    NumberOfRounds()
   });
 
   easyB.addEventListener("click", function() {
@@ -265,6 +265,7 @@ function startPage() {
     midB.classList.remove("levelChoosen");
     hardB.classList.remove("levelChoosen");
     level = 1;
+    NumberOfRounds()
   });
   startTable.appendChild(Simon);
   startTable.appendChild(select);
@@ -276,9 +277,36 @@ function startPage() {
   play.addEventListener("click", function() {
     if (level == undefined) {
       Swal.fire("Choose a level first!");
-    } else {
+    } else if(maxRound == undefined){
+      Swal.fire("Choose number of rounds first!");
+      setTimeout(() => {
+        NumberOfRounds()
+      }, 1500);
+    }
+     else {
       game(level);
     }
   });
+}
+
+function NumberOfRounds() {
+  Swal.fire({
+    title: 'How Many Rounds?',
+    icon: 'question',
+    input: 'range',
+    inputAttributes: {
+      min: 1,
+      max: 100,
+      step: 1
+    },
+    inputValue: 5
+  }
+  ).then((val)=>{
+    console.log("val = ",val.value);
+    maxRound = val.value
+     
+  })
+  
+  
 }
 startPage();
