@@ -70,7 +70,7 @@ function roundF(level) {
             red1.style.opacity = "1.0";
           }, 1000);
         }
-      }, 2000 * index);
+      }, 1100 * index);
       setTimeout(() => {
         if (element == 2) {
           audio2.play();
@@ -80,7 +80,7 @@ function roundF(level) {
             blue2.style.opacity = "1.0";
           }, 1000);
         }
-      }, 2000 * index);
+      }, 1100 * index);
 
       setTimeout(() => {
         if (element == 3) {
@@ -90,7 +90,7 @@ function roundF(level) {
             yellow3.style.opacity = "1.0";
           }, 1000);
         }
-      }, 2000 * index);
+      }, 1100 * index);
 
       setTimeout(() => {
         if (element == 4) {
@@ -100,10 +100,10 @@ function roundF(level) {
             green4.style.opacity = "1.0";
           }, 1000);
         }
-      }, 2000 * index);
+      }, 1100 * index);
     });
     
-  }, 1500);}
+  }, 1000);}
 
   red1.setAttribute("id", 1);
   blue2.setAttribute("id", 2);
