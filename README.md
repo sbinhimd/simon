@@ -2,6 +2,9 @@
 
 you have to press the colors in the same order the computer will show you
 
+Simon Game website
+https://sbinhimd.github.io/simon/
+
 ## Description
 
 Simon is a memory game where you have to remember the buttons presses and press it again in the same order,in each round the cpu will show you the previous presses and plus the new ones, can you ?
